@@ -1,0 +1,36 @@
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 8px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 8px;
+  background-color: var(--theme-background);
+  border: 1px solid var(--theme-border);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 8px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+  /* background-color: var(--theme-color-main); */
+  background-image: linear-gradient(
+    to bottom left,
+    var(--theme-color-main),
+    var(--theme-color-light)
+  );
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.6s ease-in;
+}
+
+/* .review-editor {
+  pointer-events: ;
+} */
