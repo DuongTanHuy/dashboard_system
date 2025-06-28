@@ -10,14 +10,12 @@ import { DashboardRoutes } from './dashboard';
 
 export default function Router() {
   const { user } = useAuthContext();
-  const isApprover = user?.role === 'approver';
+  const isEmployee = user?.role === 'employee';
 
   return useRoutes([
     {
       path: '/',
-      element: (
-        <Navigate to={isApprover ? '/script-management/approve' : PATH_AFTER_LOGIN} replace />
-      ),
+      element: <Navigate to={isEmployee ? '/user-manage' : PATH_AFTER_LOGIN} replace />,
     },
 
     // Auth routes

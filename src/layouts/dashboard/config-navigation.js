@@ -53,7 +53,24 @@ export function useNavData() {
               },
             ]
           : [
-              { title: 'Quản lý tài khoản app', path: paths.dashboard.root, icon: ICONS.user },
+              ...(!isEmployee
+                ? [
+                    {
+                      title: 'Thống kê',
+                      path: paths.dashboard.statistical.root,
+                      icon: ICONS.statistical,
+                      children: [
+                        { title: 'Doanh thu', path: paths.dashboard.statistical.revenue },
+                        { title: 'Affiliate', path: paths.dashboard.statistical.affiliate },
+                      ],
+                    },
+                  ]
+                : []),
+              {
+                title: 'Quản lý tài khoản app',
+                path: paths.dashboard.user_manager,
+                icon: ICONS.user,
+              },
               {
                 title: 'Quản lý tài khoản cms',
                 path: paths.dashboard.cms_user,
@@ -96,15 +113,6 @@ export function useNavData() {
                       title: 'Quản lý hồ sơ',
                       path: paths.dashboard.profile.list,
                       icon: ICONS.profile,
-                    },
-                    {
-                      title: 'Thống kê',
-                      path: paths.dashboard.statistical.root,
-                      icon: ICONS.statistical,
-                      children: [
-                        { title: 'Doanh thu', path: paths.dashboard.statistical.revenue },
-                        { title: 'Affiliate', path: paths.dashboard.statistical.affiliate },
-                      ],
                     },
                   ]
                 : []),

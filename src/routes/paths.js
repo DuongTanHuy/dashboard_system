@@ -29,7 +29,8 @@ export const paths = {
   },
   // DASHBOARD
   dashboard: {
-    root: `${ROOTS.DASHBOARD}user-manage`,
+    root: `${ROOTS.DASHBOARD}statistical/revenue`,
+    user_manager: `${ROOTS.DASHBOARD}user-manage`,
     cms_user: `${ROOTS.DASHBOARD}cms-user`,
     user_activity: `${ROOTS.DASHBOARD}user-activity`,
     transaction_history: {

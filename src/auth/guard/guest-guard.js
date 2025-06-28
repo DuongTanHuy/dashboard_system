@@ -14,10 +14,10 @@ export default function GuestGuard({ children }) {
   const searchParams = useSearchParams();
 
   const { authenticated, user } = useAuthContext();
-  const isApprover = user?.role === 'approver';
+  const isEmployee = user?.role === 'employee';
 
-  const returnTo = isApprover
-    ? '/script-management/approve'
+  const returnTo = isEmployee
+    ? '/user-manage'
     : searchParams.get('returnTo') || paths.dashboard.root;
 
   const check = useCallback(() => {
