@@ -7,7 +7,7 @@ import { Button, InputAdornment, MenuItem, TextField, Typography, alpha } from '
 import Iconify from 'src/components/iconify';
 import { bgGradient } from 'src/theme/css';
 import { useTheme } from '@emotion/react';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 // ----------------------------------------------------------------------
 

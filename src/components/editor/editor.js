@@ -4,7 +4,6 @@ import ReactQuill from 'react-quill';
 // @mui
 import { alpha } from '@mui/material/styles';
 //
-import { useRef } from 'react';
 import { StyledEditor } from './styles';
 import Toolbar, { formats } from './toolbar';
 
@@ -20,27 +19,6 @@ export default function Editor({
   formatType,
   ...other
 }) {
-  const reactQuillRef = useRef(null);
-
-  // const imageHandler = useCallback(() => {
-  //   const input = document.createElement('input');
-  //   input.setAttribute('type', 'file');
-  //   input.setAttribute('accept', 'image/*');
-  //   input.click();
-  //   input.onchange = async () => {
-  //     if (input !== null && input.files !== null) {
-  //       const file = input.files[0];
-  //       const imageURL = await getURLImage(file);
-  //       const quill = reactQuillRef.current;
-  //       if (quill) {
-  //         const range = quill.getEditorSelection();
-  //         // eslint-disable-next-line no-unused-expressions
-  //         range && quill.getEditor().insertEmbed(range.index, 'image', imageURL);
-  //       }
-  //     }
-  //   };
-  // }, []);
-
   const modules = {
     toolbar: readOnly
       ? false
@@ -79,7 +57,6 @@ export default function Editor({
         {!readOnly && <Toolbar id={id} isSimple={simple} />}
 
         <ReactQuill
-          ref={reactQuillRef}
           modules={modules}
           formats={formats}
           placeholder="Write something awesome..."

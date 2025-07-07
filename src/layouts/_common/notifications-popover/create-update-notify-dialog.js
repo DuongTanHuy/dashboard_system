@@ -19,7 +19,7 @@ import { LoadingButton } from '@mui/lab';
 import { ERROR_CODE } from 'src/utils/constance';
 import { enqueueSnackbar } from 'notistack';
 import Editor from 'src/components/editor/editor';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import {
   createSystemNotifyApi,
   getSystemNotifyDetailApi,

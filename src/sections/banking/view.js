@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import * as XLSX from 'xlsx-js-style';
+import { utils, writeFile } from 'xlsx-js-style';
 // @mui
 import Container from '@mui/material/Container';
 // components
@@ -180,9 +180,9 @@ export default function BankingView() {
         TienThue: '',
       }));
 
-      const workbook = XLSX.utils.book_new();
+      const workbook = utils.book_new();
 
-      const worksheet = XLSX.utils.json_to_sheet(data);
+      const worksheet = utils.json_to_sheet(data);
 
       const colWidths = [
         { wch: 12 },
@@ -222,12 +222,12 @@ export default function BankingView() {
 
       worksheet['!cols'] = colWidths;
 
-      const headerRange = XLSX.utils.decode_range(worksheet['!ref']);
+      const headerRange = utils.decode_range(worksheet['!ref']);
       const firstRow = headerRange.s.r;
 
       // eslint-disable-next-line no-plusplus
       for (let C = headerRange.s.c; C <= headerRange.e.c; ++C) {
-        const cellAddress = XLSX.utils.encode_cell({ r: firstRow, c: C });
+        const cellAddress = utils.encode_cell({ r: firstRow, c: C });
         // eslint-disable-next-line no-continue
         if (!worksheet[cellAddress]) continue;
 
@@ -246,9 +246,9 @@ export default function BankingView() {
         }
       }
 
-      XLSX.utils.book_append_sheet(workbook, worksheet, 'Sheet1');
+      utils.book_append_sheet(workbook, worksheet, 'Sheet1');
 
-      XLSX.writeFile(workbook, filename);
+      writeFile(workbook, filename);
 
       enqueueSnackbar('Xuất file thành công', { variant: 'success' });
     } catch (error) {

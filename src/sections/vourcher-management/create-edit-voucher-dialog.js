@@ -24,7 +24,7 @@ import { LoadingButton } from '@mui/lab';
 import { enqueueSnackbar } from 'notistack';
 import { ERROR_CODE } from 'src/utils/constance';
 import { formatErrors } from 'src/utils/format-errors';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { fDate } from 'src/utils/format-time';
 import Iconify from 'src/components/iconify';
 import { cloneDeep } from 'lodash';

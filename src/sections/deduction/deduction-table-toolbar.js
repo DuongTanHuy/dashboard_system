@@ -10,7 +10,7 @@ import { bgGradient } from 'src/theme/css';
 import { useTheme } from '@emotion/react';
 import { useRouter, useSearchParams } from 'src/routes/hooks';
 import { paths } from 'src/routes/paths';
-import { DatePicker } from '@mui/x-date-pickers';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 // ----------------------------------------------------------------------
 
