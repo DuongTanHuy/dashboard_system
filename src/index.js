@@ -5,6 +5,8 @@ import { HelmetProvider } from 'react-helmet-async';
 //
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { ErrorBoundary } from 'react-error-boundary';
+import Page500 from 'src/pages/500';
 import App from './App';
 
 // ----------------------------------------------------------------------
@@ -18,7 +20,9 @@ root.render(
     <BrowserRouter>
       <Suspense>
         <QueryClientProvider client={queryClient}>
-          <App />
+          <ErrorBoundary fallback={<Page500 />}>
+            <App />
+          </ErrorBoundary>
           <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
       </Suspense>
