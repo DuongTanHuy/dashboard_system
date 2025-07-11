@@ -15,11 +15,14 @@
     "clear-all": "rm -rf node_modules .next out dist build",
     "re-start": "rm -rf node_modules .next out dist build && yarn install && yarn start",
     "re-build": "rm -rf node_modules .next out dist build && yarn install && yarn build",
-    "re-build-test": "rm -rf node_modules .next out dist build && npm install && npm run build"
+    "re-build-test": "rm -rf node_modules .next out dist build && npm install && npm run build",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
-      "react-app"
+      "react-app",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -85,6 +88,10 @@
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@babel/plugin-syntax-flow": "^7.22.5",
     "@babel/plugin-transform-react-jsx": "^7.22.5",
+    "@storybook/addon-docs": "9.0.16",
+    "@storybook/addon-onboarding": "9.0.16",
+    "@storybook/preset-create-react-app": "9.0.16",
+    "@storybook/react-webpack5": "9.0.16",
     "@tanstack/eslint-plugin-query": "^5.81.2",
     "@types/react": "^18.2.21",
     "eslint": "^8.48.0",
@@ -98,10 +105,13 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-storybook": "9.0.16",
     "eslint-plugin-unused-imports": "^3.0.0",
     "prettier": "^3.0.3",
     "source-map-explorer": "^2.5.3",
-    "typescript": "^5.2.2"
+    "storybook": "9.0.16",
+    "typescript": "^5.2.2",
+    "webpack": "5.100.0"
   },
   "overrides": {
     "nth-check": "2.1.1",
