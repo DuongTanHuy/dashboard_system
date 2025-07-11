@@ -38,7 +38,7 @@ export function SettingsProvider({ children, defaultSettings }) {
   document.documentElement.style.setProperty('--theme-color-main', theme.main);
   document.documentElement.style.setProperty('--theme-color-light', theme.light);
 
-  const [openDrawer, setOpenDrawer] = useState(false);
+  const [openDrawer, setOpenDrawer] = useState(defaultSettings?.open ?? false);
 
   const isArabic = localStorageGetItem('i18nextLng') === 'ar';
 

@@ -1,50 +1,186 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { fn } from 'storybook/test';
+import React from 'react';
+import Button from '@mui/material/Button';
+import { Stack, Typography } from '@mui/material';
 
-import { Button } from './Button';
-
-// More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 export default {
-  title: 'Example/Button',
-  component: Button,
-  parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
-    layout: 'centered',
-  },
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
+  title: 'Components/Button',
+  // sử dụng export const Contained = (args) => (...) thì không cần khai báo component ở đây
+  // component: Button,
   tags: ['autodocs'],
-  // More on argTypes: https://storybook.js.org/docs/api/argtypes
   argTypes: {
-    backgroundColor: { control: 'color' },
-  },
-  // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
-  args: { onClick: fn() },
-};
-
-// More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
-export const Primary = {
-  args: {
-    primary: true,
-    label: 'Button',
-  },
-};
-
-export const Secondary = {
-  args: {
-    label: 'Button',
+    color: {
+      control: {
+        type: 'select',
+        options: ['primary', 'secondary', 'error', 'warning', 'info', 'success'],
+      },
+    },
+    size: {
+      control: { type: 'select', options: ['small', 'medium', 'large'] },
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    onClick: { action: 'clicked' },
   },
 };
 
-export const Large = {
-  args: {
-    size: 'large',
-    label: 'Button',
+// eslint-disable-next-line react/destructuring-assignment
+const Template = (args) => <Button {...args}>{args.children || 'Button'}</Button>;
+
+// 1. Contained Buttons
+export const Contained = (args) => (
+  <Stack
+    spacing={2}
+    direction="row"
+    width={1}
+    height={1}
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Template {...args} color="primary">
+      Primary
+    </Template>
+    <Template {...args} color="secondary">
+      Secondary
+    </Template>
+    <Template {...args} color="error">
+      Error
+    </Template>
+    <Template {...args} color="warning">
+      Warning
+    </Template>
+    <Template {...args} color="info">
+      Info
+    </Template>
+    <Template {...args} color="success">
+      Success
+    </Template>
+    <Template {...args} disabled>
+      Disabled
+    </Template>
+  </Stack>
+);
+Contained.args = {
+  variant: 'contained',
+};
+Contained.parameters = {
+  docs: {
+    description: {
+      story: 'Nút **contained** có nền màu và thường được dùng cho các hành động chính, nổi bật.',
+    },
   },
 };
 
-export const Small = {
-  args: {
-    size: 'small',
-    label: 'Button',
+// 2. Outlined Buttons
+export const Outlined = (args) => (
+  <Stack
+    spacing={2}
+    direction="row"
+    width={1}
+    height={1}
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Template {...args} color="primary">
+      Primary
+    </Template>
+    <Template {...args} color="secondary">
+      Secondary
+    </Template>
+    <Template {...args} color="error">
+      Error
+    </Template>
+    <Template {...args} color="warning">
+      Warning
+    </Template>
+    <Template {...args} color="info">
+      Info
+    </Template>
+    <Template {...args} color="success">
+      Success
+    </Template>
+    <Template {...args} disabled>
+      Disabled
+    </Template>
+  </Stack>
+);
+Outlined.args = {
+  variant: 'outlined',
+};
+Outlined.parameters = {
+  docs: {
+    description: {
+      story: 'Nút **outlined** có viền và không có nền màu, thích hợp cho các hành động phụ.',
+    },
+  },
+};
+
+// 3. Text Buttons
+export const Text = (args) => (
+  <Stack
+    spacing={2}
+    direction="row"
+    width={1}
+    height={1}
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Template {...args} color="primary">
+      Primary
+    </Template>
+    <Template {...args} color="secondary">
+      Secondary
+    </Template>
+    <Template {...args} color="error">
+      Error
+    </Template>
+    <Template {...args} color="warning">
+      Warning
+    </Template>
+    <Template {...args} color="info">
+      Info
+    </Template>
+    <Template {...args} color="success">
+      Success
+    </Template>
+    <Template {...args} disabled>
+      Disabled
+    </Template>
+  </Stack>
+);
+Text.args = {
+  variant: 'text',
+};
+Text.parameters = {
+  docs: {
+    description: {
+      story: 'Nút **text** không có nền hoặc viền, dùng cho các hành động ít quan trọng hơn.',
+    },
+  },
+};
+
+// 4. Combined Buttons
+export const AllVariants = (args) => (
+  <Stack
+    spacing={4}
+    direction="column"
+    width={1}
+    height={1}
+    justifyContent="center"
+    alignItems="center"
+  >
+    <Typography variant="h3">Contained Buttons</Typography>
+    <Contained {...args} {...Contained.args} />
+    <Typography variant="h3">Outlined Buttons</Typography>
+    <Outlined {...args} {...Outlined.args} />
+    <Typography variant="h3">Text Buttons</Typography>
+    <Text {...args} {...Text.args} />
+  </Stack>
+);
+AllVariants.parameters = {
+  docs: {
+    description: {
+      story: 'Tổng hợp tất cả các loại Button variants và màu sắc.',
+    },
   },
 };
